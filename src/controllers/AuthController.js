@@ -14,7 +14,7 @@ class controller  extends Controller {
         this.router.post('/login', (req, res) => {
             const { email, password } = req.body;
             const schema = Joi.object({
-                email: Joi.string().email().required(),
+                email: Joi.string().required(),
                 password: Joi.string().required()
             });
             const { error } = schema.validate(req.body);
@@ -31,7 +31,7 @@ class controller  extends Controller {
                     if (err) {
                         return res.status(500).send(err.message);
                     }
-                    
+
                     if (rows && rows.length === 0) {
                         return res.status(400).json({
                             message: 'Datos de acceso incorrectos, su correo no se encuentra en la base de datos'
