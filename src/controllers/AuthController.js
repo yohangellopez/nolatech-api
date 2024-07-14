@@ -28,7 +28,8 @@ class controller  extends Controller {
             try {
                 this.database.query(`SELECT * FROM users WHERE email = ?`,
                 [email], (err, rows) => {
-                    if (rows.length === 0) {
+                    console.log(rows);
+                    if (rows && rows.length === 0) {
                         return res.status(400).json({
                             message: 'Datos de acceso incorrectos, su correo no se encuentra en la base de datos'
                         });
